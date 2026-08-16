@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- O menu tambem e um recurso XML, como o layout. Fica em res/menu/ e vira
+     R.menu.menu_principal.
+
+     app:showAsAction decide onde cada item aparece:
+       never  -> so dentro do menu de tres pontinhos;
+       ifRoom -> vira botao na barra se houver espaco;
+       always -> forca o botao na barra. -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Um item que contem outro <menu> vira submenu. -->
+    <item
+        android:id="@+id/acao_ordenar"
+        android:title="@string/menu_ordenar"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/acao_ordenar_recente"
+                android:title="@string/menu_ordenar_recente" />
+            <item
+                android:id="@+id/acao_ordenar_atividade"
+                android:title="@string/menu_ordenar_atividade" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/acao_limpar"
+        android:title="@string/menu_limpar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/acao_sobre"
+        android:title="@string/menu_sobre"
+        app:showAsAction="never" />
+
+</menu>

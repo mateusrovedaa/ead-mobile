@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meu Treino</string>
+
+    <string name="titulo">Registro de treinos</string>
+
+    <string name="rotulo_atividade">Nome da atividade</string>
+    <string name="dica_atividade">Ex.: corrida no parque</string>
+
+    <string name="rotulo_tipo">Tipo de treino</string>
+    <string name="tipo_cardio">Cardio</string>
+    <string name="tipo_forca">Força</string>
+    <string name="tipo_alongamento">Alongamento</string>
+
+    <string name="fez_aquecimento">Fiz aquecimento antes</string>
+
+    <string name="rotulo_data">Data do treino</string>
+
+    <string name="rotulo_cronometro">Cronômetro</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="parar">Parar</string>
+    <string name="zerar">Zerar</string>
+
+    <string name="registrar">Registrar treino</string>
+    <string name="rotulo_lista">Treinos registrados</string>
+    <string name="lista_vazia">Nenhum treino registrado ainda.</string>
+
+    <string name="informe_atividade">Informe o nome da atividade.</string>
+    <string name="escolha_tipo">Escolha o tipo de treino.</string>
+    <!-- %1$s = nome da atividade, %2$s = tipo, %3$s = data, %4$s = aquecimento -->
+    <string name="linha_treino">%1$s · %2$s · %3$s%4$s</string>
+    <!-- As aspas preservam o espaco inicial: sem elas o Android descarta os
+         espacos das pontas de qualquer string resource. -->
+    <string name="sufixo_aquecimento">" · aquecido"</string>
+    <string name="treino_registrado">Treino registrado!</string>
+</resources>

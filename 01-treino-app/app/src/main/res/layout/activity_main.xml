@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raiz LinearLayout, nao ScrollView: o formulario rola dentro do proprio
+     ScrollView (peso 1) e a ListView fica com area propria embaixo. Colocar uma
+     ListView DENTRO de um ScrollView e a armadilha classica — os dois disputam
+     o gesto de arrastar e a lista colapsa para a altura de um item. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ImageView: o desenho vem de res/drawable/ic_treino.xml -->
+            <ImageView
+                android:id="@+id/imagemTreino"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/titulo"
+                android:src="@drawable/ic_treino" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="@string/titulo"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/TituloSecao"
+                android:labelFor="@+id/campoAtividade"
+                android:text="@string/rotulo_atividade" />
+
+            <EditText
+                android:id="@+id/campoAtividade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dica_atividade"
+                android:inputType="text|textCapSentences"
+                android:maxLines="1" />
+
+            <!-- RadioGroup: e ele que garante escolha unica. Sem o grupo, cada
+                 RadioButton se marca de forma independente. -->
+            <TextView
+                style="@style/TituloSecao"
+                android:text="@string/rotulo_tipo" />
+
+            <RadioGroup
+                android:id="@+id/grupoTipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/tipoCardio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tipo_cardio" />
+
+                <RadioButton
+                    android:id="@+id/tipoForca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/tipo_forca" />
+
+                <RadioButton
+                    android:id="@+id/tipoAlongamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/tipo_alongamento" />
+            </RadioGroup>
+
+            <!-- CheckBox: escolha multipla e independente. -->
+            <CheckBox
+                android:id="@+id/caixaAquecimento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/fez_aquecimento" />
+
+            <TextView
+                style="@style/TituloSecao"
+                android:text="@string/rotulo_cronometro" />
+
+            <!-- Chronometer conta sozinho a partir de uma base de tempo; nao
+                 precisa de Thread nem de Handler. -->
+            <Chronometer
+                android:id="@+id/cronometro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/botaoIniciar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/iniciar" />
+
+                <Button
+                    android:id="@+id/botaoParar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/parar" />
+
+                <Button
+                    android:id="@+id/botaoZerar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/zerar" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/TituloSecao"
+                android:text="@string/rotulo_data" />
+
+            <!-- datePickerMode=spinner deixa o componente compacto (tres
+                 rodinhas). O modo padrao e o calendario inteiro, que ocupa a
+                 tela toda e briga com o scroll do formulario. -->
+            <DatePicker
+                android:id="@+id/seletorData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Fora do ScrollView de proposito: a acao principal fica sempre visivel,
+         sem depender de o usuario rolar ate o fim do formulario. -->
+    <Button
+        android:id="@+id/botaoRegistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingVertical="12dp"
+        android:text="@string/registrar" />
+
+    <TextView
+        style="@style/TituloSecao"
+        android:text="@string/rotulo_lista" />
+
+    <!-- Mensagem de lista vazia: a Activity a esconde no primeiro registro. -->
+    <TextView
+        android:id="@+id/textoVazio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/lista_vazia" />
+
+    <ListView
+        android:id="@+id/listaTreinos"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>

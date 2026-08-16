@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Respiro das bordas nas telas secundarias. Fica aqui, e nao chumbado no
+         layout, porque o valor e somado ao recuo das barras do sistema dentro
+         da Activity. -->
+    <dimen name="espaco_tela">24dp</dimen>
+</resources>

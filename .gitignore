@@ -1,0 +1,13 @@
+# Material de preparacao das aulas: fica so no computador.
+guias/
+
+*.iml
+.gradle/
+/local.properties
+.idea/
+.DS_Store
+build/
+/captures
+.externalNativeBuild
+.cxx
+local.properties

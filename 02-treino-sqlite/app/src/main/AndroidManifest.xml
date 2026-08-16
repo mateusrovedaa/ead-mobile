@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Desde a API 33 (Android 13) notificar exige esta permissao, e ela e do
+         tipo que o usuario precisa autorizar em tempo de execucao: declarar
+         aqui nao basta, tem que pedir pela tela tambem. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_treino"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TreinoApp">
+
+        <!-- Toda tela do app precisa estar declarada aqui. Uma Activity que
+             existe como arquivo .kt mas nao aparece no manifesto derruba o app
+             com ActivityNotFoundException na hora de abrir. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- exported="false": so o proprio app pode abrir estas telas.
+             Sem intent-filter de LAUNCHER, elas nao viram icone na gaveta. -->
+        <activity
+            android:name=".DetalheActivity"
+            android:exported="false"
+            android:label="@string/detalhe_titulo" />
+
+        <activity
+            android:name=".SobreActivity"
+            android:exported="false"
+            android:label="@string/menu_sobre" />
+
+    </application>
+
+</manifest>
