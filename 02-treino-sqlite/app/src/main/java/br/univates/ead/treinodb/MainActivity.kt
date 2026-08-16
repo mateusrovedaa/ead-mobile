@@ -108,7 +108,10 @@ class MainActivity : AppCompatActivity() {
             abrirDetalhe(treinos[posicao])
         }
 
-        Log.d(CICLO, "onCreate")
+        // O hashCode identifica ESTE objeto Activity na memoria. Ao girar a tela
+        // o numero muda: prova de que nao e a mesma Activity, e sim uma nova.
+        // Voltar do Home mantem o numero — a mesma Activity continuava viva.
+        Log.d(CICLO, "onCreate  — instancia ${hashCode()}")
     }
 
     /**
@@ -120,7 +123,7 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onStart() {
         super.onStart()
-        Log.d(CICLO, "onStart")
+        Log.d(CICLO, "onStart    — instancia ${hashCode()}, ${treinos.size} treinos na tela")
         carregarLista()
     }
 
