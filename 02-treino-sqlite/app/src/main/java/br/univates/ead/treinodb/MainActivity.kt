@@ -47,6 +47,15 @@ class MainActivity : AppCompatActivity() {
      */
     private var treinos: List<Treino> = emptyList()
 
+    /**
+     * Quantos treinos ESTA instancia da Activity registrou.
+     *
+     * E um campo comum, como qualquer outro. Serve para a aula: ao girar a tela
+     * ele volta a zero, porque a instancia e outra — enquanto o total do banco
+     * continua igual.
+     */
+    private var gravadosNestaTela = 0
+
     private lateinit var adapter: ArrayAdapter<String>
 
     /**
@@ -179,7 +188,16 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
 
         binding.textoVazio.isVisible = treinos.isEmpty()
-        binding.textoTotal.text = getString(R.string.total_treinos, bd.contar())
+
+        // Linha de diagnostico da aula. `hashCode()` identifica ESTA instancia da
+        // Activity: ao girar a tela o numero muda, porque e outro objeto — e por
+        // isso `gravadosNestaTela` volta a zero. O contador do banco nao se abala.
+        binding.textoTotal.text = getString(
+            R.string.total_treinos,
+            Integer.toHexString(hashCode()),
+            gravadosNestaTela,
+            bd.contar(),
+        )
     }
 
     /** Le a tela, valida e grava uma linha nova no banco. */
@@ -210,6 +228,8 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(binding.raiz, R.string.falha_registro, Snackbar.LENGTH_LONG).show()
             return
         }
+
+        gravadosNestaTela++
 
         // Guarda o tipo escolhido para ja vir marcado na proxima abertura.
         prefs.ultimoTipo = tipo

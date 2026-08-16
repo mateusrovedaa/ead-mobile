@@ -164,6 +164,17 @@
         android:paddingVertical="12dp"
         android:text="@string/registrar" />
 
+    <!-- Linha de diagnostico. Nao faria sentido num app de verdade; esta aqui
+         para deixar visivel, na propria tela, QUAL objeto Activity esta
+         desenhando e quantos treinos existem na memoria dele. -->
+    <TextView
+        android:id="@+id/textoDiagnostico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="13sp"
+        android:typeface="monospace" />
+
     <TextView
         style="@style/TituloSecao"
         android:text="@string/rotulo_lista" />

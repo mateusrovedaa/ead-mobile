@@ -88,6 +88,8 @@ class MainActivity : AppCompatActivity() {
         // O codigo entre chaves nao roda agora; fica guardado esperando o toque.
         binding.botaoRegistrar.setOnClickListener { registrarTreino() }
 
+        atualizarDiagnostico()
+
         Log.d("CICLO", "onCreate")
     }
 
@@ -215,6 +217,22 @@ class MainActivity : AppCompatActivity() {
         binding.textoVazio.isVisible = treinos.isEmpty()
         // Limpa o campo para o proximo registro.
         binding.campoAtividade.text.clear()
+        atualizarDiagnostico()
         Snackbar.make(binding.raiz, R.string.treino_registrado, Snackbar.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Escreve na tela qual objeto Activity esta desenhando e quantos treinos ele
+     * tem na memoria.
+     *
+     * `hashCode()` identifica ESTA instancia. Ao girar a tela o numero muda: e
+     * outro objeto. Ao voltar do Home o numero se mantem: e o mesmo objeto.
+     */
+    private fun atualizarDiagnostico() {
+        binding.textoDiagnostico.text = getString(
+            R.string.diagnostico,
+            Integer.toHexString(hashCode()),
+            treinos.size,
+        )
     }
 }

@@ -33,4 +33,6 @@
          espacos das pontas de qualquer string resource. -->
     <string name="sufixo_aquecimento">" · aquecido"</string>
     <string name="treino_registrado">Treino registrado!</string>
+    <!-- %1$s = identificador do objeto Activity, %2$d = treinos na memoria -->
+    <string name="diagnostico">Activity #%1$s · na memória: %2$d</string>
 </resources>

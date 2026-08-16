@@ -30,8 +30,9 @@
     <!-- As aspas preservam o espaço inicial: sem elas o Android descarta os
          espaços das pontas de qualquer string resource. -->
     <string name="sufixo_aquecimento">" · aquecido"</string>
-    <!-- %1$d é um número inteiro. -->
-    <string name="total_treinos">Total no banco: %1$d</string>
+    <!-- Linha de diagnóstico da aula: %1$s = identificador do objeto Activity,
+         %2$d = treinos registrados por ESTA instância, %3$d = linhas no banco. -->
+    <string name="total_treinos">Activity #%1$s · nesta tela: %2$d · no banco: %3$d</string>
 
     <!-- Menu -->
     <string name="menu_ordenar">Ordenar</string>
