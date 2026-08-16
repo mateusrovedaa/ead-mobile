@@ -81,8 +81,9 @@ object Notificacoes {
 
         // O que acontece quando a pessoa toca na notificacao: abre o app.
         // PendingIntent = uma Intent que o SISTEMA vai disparar depois, em nome
-        // do nosso app. FLAG_IMMUTABLE e obrigatorio desde a API 31: sem ele o
-        // app nem inicia.
+        // do nosso app. FLAG_IMMUTABLE e obrigatorio para apps com targetSdk 31
+        // ou maior: sem ele, ESTA chamada lanca IllegalArgumentException. E
+        // regra de targetSdk, nao da versao do aparelho.
         val intent = Intent(context, MainActivity::class.java)
         val acaoAoTocar = PendingIntent.getActivity(
             context,
