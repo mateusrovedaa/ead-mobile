@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -106,6 +107,8 @@ class MainActivity : AppCompatActivity() {
         binding.listaTreinos.setOnItemClickListener { _, _, posicao, _ ->
             abrirDetalhe(treinos[posicao])
         }
+
+        Log.d(CICLO, "onCreate")
     }
 
     /**
@@ -117,11 +120,31 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onStart() {
         super.onStart()
+        Log.d(CICLO, "onStart")
         carregarLista()
+    }
+
+    // Os tres metodos abaixo existem so para deixar o ciclo de vida visivel no
+    // Logcat. Filtre por `tag:CICLO` e observe a sequencia ao girar a tela, ao
+    // apertar Home e ao voltar para o app.
+    override fun onResume() {
+        super.onResume()
+        Log.d(CICLO, "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(CICLO, "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(CICLO, "onStop")
     }
 
     /** Fecha a conexao com o banco quando a tela e destruida de vez. */
     override fun onDestroy() {
+        Log.d(CICLO, "onDestroy")
         bd.close()
         super.onDestroy()
     }
@@ -317,5 +340,10 @@ class MainActivity : AppCompatActivity() {
             titulo = getString(R.string.lembrete_titulo),
             texto = getString(R.string.lembrete_texto, bd.contar()),
         )
+    }
+
+    private companion object {
+        /** Etiqueta usada nos logs de ciclo de vida. No Logcat: `tag:CICLO`. */
+        const val CICLO = "CICLO"
     }
 }
